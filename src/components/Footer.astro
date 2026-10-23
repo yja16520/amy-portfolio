@@ -63,6 +63,19 @@ import profile from '../data/profile.json';
     <!-- Bottom Bar -->
     <div class="mt-16 pt-8 border-t border-stone-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-400 gap-4">
       <p>© {new Date().getFullYear()} Zimeng (Amy) Yan. All rights reserved.</p>
+
+      <!-- Visitor Counter -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-800/90 border border-stone-700/80 text-xs font-mono text-stone-300 shadow-inner">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-stone-400">VISITOR STATS:</span>
+        <img
+          src="https://api.visitorbadge.io/api/combined?path=amy-portfolio-ten.vercel.app&label=VIEWS&labelColor=%23292524&countColor=%23d97706&style=flat"
+          alt="Live Visitor Counter"
+          class="h-4.5 rounded"
+          loading="lazy"
+        />
+      </div>
+
       <p class="flex items-center gap-1.5">
         Designed for long-term clarity and speed.
       </p>
