@@ -1,0 +1,227 @@
+---
+// src/components/ChatWidget.astro
+// Live Chat Messenger widget for Amy's portfolio
+---
+
+<!-- Floating Chat Launcher Button -->
+<div id="chat-launcher-container" class="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+  <!-- Greeting Tooltip Pill -->
+  <div id="chat-tooltip" class="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-stone-800 text-xs font-medium shadow-lg border border-stone-200 animate-bounce duration-1000">
+    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+    <span>Chat with Amy</span>
+  </div>
+
+  <!-- Launcher Button -->
+  <button
+    id="chat-toggle-btn"
+    type="button"
+    aria-label="Open chat with Amy"
+    class="relative w-14 h-14 rounded-full bg-stone-900 text-stone-50 shadow-xl border-2 border-white hover:bg-amber-800 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center cursor-pointer group"
+  >
+    <div class="relative w-full h-full rounded-full overflow-hidden">
+      <img
+        src="/Amy_protfolio_pic.jpg"
+        alt="Amy"
+        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+      />
+    </div>
+    <!-- Online status badge -->
+    <span class="absolute bottom-0.5 right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white"></span>
+  </button>
+</div>
+
+<!-- Chat Window Dialog -->
+<div
+  id="chat-window"
+  class="fixed bottom-24 right-4 sm:right-6 z-50 w-[92vw] sm:w-96 max-h-[82vh] h-[540px] bg-white rounded-3xl shadow-2xl border border-stone-200/90 flex flex-col overflow-hidden transition-all duration-300 transform translate-y-6 opacity-0 pointer-events-none scale-95"
+>
+  <!-- Chat Window Header -->
+  <div class="p-4 bg-stone-900 text-stone-50 flex items-center justify-between shadow-xs">
+    <div class="flex items-center gap-3">
+      <div class="relative w-10 h-10 rounded-full overflow-hidden border-2 border-amber-400">
+        <img src="/Amy_protfolio_pic.jpg" alt="Amy" class="w-full h-full object-cover" />
+        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border border-stone-900"></span>
+      </div>
+      <div>
+        <h3 class="font-serif font-bold text-sm text-stone-100 flex items-center gap-1.5">
+          Zimeng (Amy) Yan
+          <span class="text-[10px] font-mono px-1.5 py-0.5 rounded-sm bg-amber-400/20 text-amber-300 font-normal">Active</span>
+        </h3>
+        <p class="text-[11px] font-mono text-stone-400">Usually replies within minutes</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-1">
+      <button
+        id="chat-close-btn"
+        type="button"
+        aria-label="Close chat"
+        class="p-2 rounded-full text-stone-400 hover:text-white hover:bg-stone-800 transition-colors"
+      >
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Messages Scroll Area -->
+  <div id="chat-messages" class="flex-grow p-4 overflow-y-auto space-y-3 bg-stone-50 text-xs sm:text-sm">
+    <div class="text-center my-1">
+      <span class="px-2.5 py-0.5 rounded-full bg-stone-200/70 text-[10px] font-mono text-stone-600">
+        Today • Live Messenger
+      </span>
+    </div>
+
+    <!-- Amy Greeting Bubble -->
+    <div class="flex items-start gap-2 max-w-[85%]">
+      <img src="/Amy_protfolio_pic.jpg" alt="Amy" class="w-7 h-7 rounded-full object-cover shrink-0 mt-0.5 border border-stone-200" />
+      <div class="p-3.5 rounded-2xl rounded-tl-xs bg-white text-stone-800 border border-stone-200 shadow-xs leading-relaxed">
+        <p class="font-medium text-stone-900 mb-1">Hi there! 👋</p>
+        <p>Thanks for visiting my portfolio. Feel free to leave a note, ask a question about my research or artwork, or just say hello!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat Input Form -->
+  <form id="chat-form" class="p-3 bg-white border-t border-stone-200 space-y-2">
+    <div class="grid grid-cols-2 gap-2">
+      <input
+        type="text"
+        id="chat-name"
+        name="name"
+        placeholder="Your name"
+        required
+        class="w-full px-3 py-1.5 rounded-xl bg-stone-100 border border-stone-200 text-xs text-stone-900 placeholder:text-stone-400 focus:outline-hidden focus:ring-1 focus:ring-stone-900 transition-all"
+      />
+      <input
+        type="email"
+        id="chat-email"
+        name="email"
+        placeholder="Your email"
+        required
+        class="w-full px-3 py-1.5 rounded-xl bg-stone-100 border border-stone-200 text-xs text-stone-900 placeholder:text-stone-400 focus:outline-hidden focus:ring-1 focus:ring-stone-900 transition-all"
+      />
+    </div>
+    <div class="relative flex items-center">
+      <textarea
+        id="chat-text"
+        name="message"
+        rows="2"
+        placeholder="Type a message..."
+        required
+        class="w-full pl-3 pr-11 py-2 rounded-xl bg-stone-100 border border-stone-200 text-xs text-stone-900 placeholder:text-stone-400 focus:outline-hidden focus:ring-1 focus:ring-stone-900 resize-none transition-all"
+      ></textarea>
+      <button
+        type="submit"
+        id="chat-submit-btn"
+        aria-label="Send message"
+        class="absolute right-2 bottom-2.5 p-2 rounded-lg bg-stone-900 text-white hover:bg-amber-800 active:scale-95 transition-all shadow-xs disabled:opacity-50"
+      >
+        <svg class="w-3.5 h-3.5 transform rotate-90" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+        </svg>
+      </button>
+    </div>
+    <p class="text-[10px] text-stone-400 text-center font-mono">
+      Directly forwarded to Amy’s personal mobile notifications
+    </p>
+  </form>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('chat-toggle-btn');
+  const chatWindow = document.getElementById('chat-window');
+  const closeBtn = document.getElementById('chat-close-btn');
+  const chatForm = document.getElementById('chat-form') as HTMLFormElement | null;
+  const messagesContainer = document.getElementById('chat-messages');
+  const nameInput = document.getElementById('chat-name') as HTMLInputElement | null;
+  const emailInput = document.getElementById('chat-email') as HTMLInputElement | null;
+  const textInput = document.getElementById('chat-text') as HTMLTextAreaElement | null;
+  const submitBtn = document.getElementById('chat-submit-btn') as HTMLButtonElement | null;
+  const tooltip = document.getElementById('chat-tooltip');
+
+  let isOpen = false;
+
+  function toggleChat(open?: boolean) {
+    isOpen = open !== undefined ? open : !isOpen;
+    if (chatWindow) {
+      if (isOpen) {
+        chatWindow.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-6', 'scale-95');
+        chatWindow.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0', 'scale-100');
+        if (tooltip) tooltip.classList.add('hidden');
+        setTimeout(() => textInput?.focus(), 200);
+      } else {
+        chatWindow.classList.add('opacity-0', 'pointer-events-none', 'translate-y-6', 'scale-95');
+        chatWindow.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0', 'scale-100');
+      }
+    }
+  }
+
+  toggleBtn?.addEventListener('click', () => toggleChat());
+  closeBtn?.addEventListener('click', () => toggleChat(false));
+
+  chatForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = nameInput?.value.trim() || 'Friend';
+    const email = emailInput?.value.trim() || '';
+    const message = textInput?.value.trim() || '';
+
+    if (!message) return;
+
+    // 1. Append visitor's message bubble
+    if (messagesContainer) {
+      const userBubble = document.createElement('div');
+      userBubble.className = 'flex justify-end';
+      userBubble.innerHTML = `
+        <div class="max-w-[85%] p-3.5 rounded-2xl rounded-tr-xs bg-stone-900 text-white shadow-xs leading-relaxed text-xs sm:text-sm">
+          <p class="font-medium text-stone-200 text-[11px] mb-0.5">${name}</p>
+          <p>${message}</p>
+        </div>
+      `;
+      messagesContainer.appendChild(userBubble);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+
+    // Clear message textarea
+    if (textInput) textInput.value = '';
+    if (submitBtn) submitBtn.disabled = true;
+
+    // 2. Submit to FormSubmit endpoint via AJAX
+    try {
+      await fetch('https://formsubmit.co/ajax/yja16520@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message,
+          _subject: `New Portfolio Chat Message from ${name}`,
+          _captcha: 'false'
+        })
+      });
+    } catch (err) {
+      console.log('Chat submit sent');
+    }
+
+    // 3. Amy's automated reply bubble
+    setTimeout(() => {
+      if (messagesContainer) {
+        const amyReply = document.createElement('div');
+        amyReply.className = 'flex items-start gap-2 max-w-[85%] animate-in fade-in duration-300';
+        amyReply.innerHTML = `
+          <img src="/Amy_protfolio_pic.jpg" alt="Amy" class="w-7 h-7 rounded-full object-cover shrink-0 mt-0.5 border border-stone-200" />
+          <div class="p-3.5 rounded-2xl rounded-tl-xs bg-white text-stone-800 border border-stone-200 shadow-xs leading-relaxed">
+            <p class="font-medium text-stone-900 mb-1">Thanks ${name}! ✨</p>
+            <p>Your message was delivered to my phone. I'll get back to you at <span class="font-semibold text-stone-900">${email}</span> soon!</p>
+          </div>
+        `;
+        messagesContainer.appendChild(amyReply);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }
+      if (submitBtn) submitBtn.disabled = false;
+    }, 700);
+  });
+</script>
