@@ -1,0 +1,259 @@
+---
+import Layout from '../layouts/Layout.astro';
+import speeches from '../data/speeches.json';
+import speechPhotos from '../data/speech_photos.json';
+
+const totalSpeeches = speeches.length;
+
+// Extract unique years and forums
+const years = ['All', '2025', '2024', '2023', '2022', '2021', '2020'];
+const forums = [
+  'All Forums',
+  'Family Meeting',
+  'TED ED CLUB',
+  "Zimeng's Hosting Friends' Sharing Session"
+];
+
+// Highlight photo sample (first 12)
+const galleryPhotos = speechPhotos.slice(0, 12);
+---
+
+<Layout
+  title="140+ Speeches Archive | Zimeng (Amy) Yan"
+  description="Comprehensive archive of over 140 formal weekly presentations delivered by Zimeng (Amy) Yan from 2020 to 2025 across philosophy, medicine, SAT pedagogy, and TED discourse."
+>
+  <!-- Header Banner -->
+  <section class="pt-16 pb-12 md:pt-24 md:pb-16 bg-gradient-to-b from-stone-100/90 to-stone-50 border-b border-stone-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100/80 border border-indigo-200 text-indigo-900 text-xs font-mono uppercase tracking-wider mb-4">
+          Oratory & Discourse Tradition
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-serif font-bold text-stone-900 tracking-tight leading-tight">
+          Speak. Listen. Grow Together.
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed">
+          In 2020, our family initiated a weekly speech forum to foster structured communication, active listening, and continuous learning. Over five consecutive years, this practice grew into an extensive library of {totalSpeeches} individual speeches analyzing ethics, psychology, history, education, and TED talks.
+        </p>
+
+        <!-- Stats Bar -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-6 border-t border-stone-200 text-left">
+          <div>
+            <span class="block text-2xl sm:text-3xl font-serif font-bold text-stone-900">141</span>
+            <span class="block text-xs font-mono text-stone-500 uppercase tracking-tight">Recorded Speeches</span>
+          </div>
+          <div>
+            <span class="block text-2xl sm:text-3xl font-serif font-bold text-stone-900">500+</span>
+            <span class="block text-xs font-mono text-stone-500 uppercase tracking-tight">TED Talks Studied</span>
+          </div>
+          <div>
+            <span class="block text-2xl sm:text-3xl font-serif font-bold text-stone-900">5+</span>
+            <span class="block text-xs font-mono text-stone-500 uppercase tracking-tight">Years Continuous</span>
+          </div>
+          <div>
+            <span class="block text-2xl sm:text-3xl font-serif font-bold text-stone-900">100+</span>
+            <span class="block text-xs font-mono text-stone-500 uppercase tracking-tight">Families Engaged</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Strip Showcase -->
+  <section class="py-8 bg-stone-900 border-b border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-4">
+        <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">
+          Presentation Moments (2017–2024)
+        </span>
+        <span class="text-xs font-mono text-stone-400">
+          Showing 12 of {speechPhotos.length} documentation photos
+        </span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
+        {galleryPhotos.map((photo, idx) => (
+          <div class="group relative rounded-xl overflow-hidden aspect-[4/3] bg-stone-800 border border-stone-700">
+            <img
+              src={photo.src}
+              alt={photo.alt || `Amy giving speech ${idx + 1}`}
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter & Live Search Toolbar -->
+  <section class="sticky top-20 z-30 bg-stone-50/95 backdrop-blur-md border-b border-stone-200 py-4 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+      <!-- Search Input -->
+      <div class="relative w-full lg:w-96">
+        <input
+          type="text"
+          id="speech-search"
+          placeholder="Search topics (e.g. SAT, TED, Medicine, Ethics)..."
+          class="w-full px-4 py-2.5 pl-10 rounded-full bg-white border border-stone-300 text-xs text-stone-900 placeholder:text-stone-400 focus:outline-hidden focus:ring-2 focus:ring-amber-600 focus:border-amber-600 transition-all shadow-xs"
+        />
+        <svg class="w-4 h-4 text-stone-400 absolute left-3.5 top-3 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+
+      <!-- Filters Row -->
+      <div class="flex flex-wrap items-center gap-3">
+        <!-- Year filter pills -->
+        <div class="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0" id="year-filters">
+          {years.map((yr) => (
+            <button
+              type="button"
+              data-year={yr}
+              class={`year-btn px-3 py-1.5 rounded-full text-xs font-mono transition-all ${
+                yr === 'All'
+                  ? 'bg-stone-900 text-stone-50 shadow-xs active'
+                  : 'bg-white text-stone-700 border border-stone-300 hover:border-stone-900'
+              }`}
+            >
+              {yr}
+            </button>
+          ))}
+        </div>
+
+        <!-- Forum Dropdown -->
+        <select
+          id="forum-filter"
+          class="px-3 py-1.5 rounded-full bg-white border border-stone-300 text-xs font-mono text-stone-700 focus:outline-hidden focus:ring-2 focus:ring-amber-600 shadow-xs"
+        >
+          {forums.map((f) => (
+            <option value={f}>{f}</option>
+          ))}
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Speech Archive Grid -->
+  <section class="py-12 md:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between mb-8">
+        <p id="speech-counter" class="text-xs font-mono text-stone-500 uppercase tracking-wider">
+          Showing <span id="count-number" class="font-bold text-stone-900">{totalSpeeches}</span> of {totalSpeeches} Speeches
+        </p>
+      </div>
+
+      <div id="speeches-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {speeches.map((sp) => {
+          const year = sp.date ? sp.date.substring(0, 4) : '';
+          const speechNum = sp.id.replace('speech', '#');
+          return (
+            <article
+              class="speech-card p-5 rounded-2xl bg-white border border-stone-200/90 hover:border-stone-900 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+              data-topic={(sp.topic || '').toLowerCase()}
+              data-year={year}
+              data-forum={sp.forum || ''}
+              data-source={(sp.source || '').toLowerCase()}
+            >
+              <div>
+                <div class="flex items-center justify-between pb-3 border-b border-stone-100 mb-3">
+                  <span class="text-xs font-mono font-bold text-amber-800 bg-amber-100/70 px-2 py-0.5 rounded">
+                    {speechNum}
+                  </span>
+                  <time datetime={sp.date} class="text-xs font-mono text-stone-500">
+                    {sp.date}
+                  </time>
+                </div>
+
+                <h2 class="font-serif text-lg font-bold text-stone-900 leading-snug">
+                  {sp.topic}
+                </h2>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-stone-100 flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono">
+                <span class="px-2 py-0.5 rounded-md bg-stone-100 text-stone-700">
+                  {sp.forum}
+                </span>
+                <span class="text-stone-500 italic">
+                  Src: {sp.source}
+                </span>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <!-- Empty Results State -->
+      <div id="no-speeches" class="hidden text-center py-20">
+        <p class="font-serif text-2xl text-stone-800 mb-2">No speeches found</p>
+        <p class="text-xs font-mono text-stone-500">Try adjusting your search query or selecting "All" years</p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const searchInput = document.getElementById('speech-search') as HTMLInputElement | null;
+  const yearBtns = document.querySelectorAll<HTMLButtonElement>('.year-btn');
+  const forumSelect = document.getElementById('forum-filter') as HTMLSelectElement | null;
+  const cards = document.querySelectorAll<HTMLElement>('.speech-card');
+  const countNumber = document.getElementById('count-number');
+  const noSpeeches = document.getElementById('no-speeches');
+
+  let activeYear = 'All';
+  let activeForum = 'All Forums';
+  let searchQuery = '';
+
+  function filterSpeeches() {
+    let visible = 0;
+    cards.forEach((card) => {
+      const topic = card.dataset.topic || '';
+      const source = card.dataset.source || '';
+      const yr = card.dataset.year || '';
+      const forum = card.dataset.forum || '';
+
+      const matchesYear = activeYear === 'All' || yr === activeYear;
+      const matchesForum = activeForum === 'All Forums' || forum === activeForum;
+      const matchesSearch = !searchQuery || topic.includes(searchQuery) || source.includes(searchQuery);
+
+      if (matchesYear && matchesForum && matchesSearch) {
+        card.classList.remove('hidden');
+        visible++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    if (countNumber) countNumber.textContent = visible.toString();
+    if (noSpeeches) {
+      if (visible === 0) {
+        noSpeeches.classList.remove('hidden');
+      } else {
+        noSpeeches.classList.add('hidden');
+      }
+    }
+  }
+
+  yearBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      yearBtns.forEach((b) => {
+        b.classList.remove('bg-stone-900', 'text-stone-50', 'shadow-xs', 'active');
+        b.classList.add('bg-white', 'text-stone-700', 'border', 'border-stone-300');
+      });
+      btn.classList.add('bg-stone-900', 'text-stone-50', 'shadow-xs', 'active');
+      btn.classList.remove('bg-white', 'text-stone-700', 'border', 'border-stone-300');
+
+      activeYear = btn.dataset.year || 'All';
+      filterSpeeches();
+    });
+  });
+
+  forumSelect?.addEventListener('change', (e) => {
+    activeForum = (e.target as HTMLSelectElement).value;
+    filterSpeeches();
+  });
+
+  searchInput?.addEventListener('input', (e) => {
+    searchQuery = (e.target as HTMLInputElement).value.toLowerCase().trim();
+    filterSpeeches();
+  });
+</script>

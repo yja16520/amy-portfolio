@@ -1,0 +1,65 @@
+{
+  "name": "Zimeng (Amy) Yan",
+  "shortName": "Amy",
+  "headline": "Scholar, Artist & Orator",
+  "aspirationalRole": "Aspiring Emergency Medicine Physician & Psychiatrist",
+  "tagline": "Science, Art, Movement & Voice — A decade of disciplined practice, curiosity, and care.",
+  "bio": "I aspire to become an ER physician or psychiatrist with a strong focus on research, driven by my passion for emergency care and my desire to serve communities in need. Nothing excites me more than seeing people smile and watching communities come together to support one another. I’m also fascinated by the human mind—why people think and behave the way they do—and drawn to the ethical and philosophical questions that shape our decisions. This curiosity fuels my pursuit of medicine, inspiring me to combine science with empathy to make a meaningful impact.",
+  "profileImage": "/Amy_protfolio_pic.jpg",
+  "stats": [
+    { "value": "140+", "label": "Formal Speeches Delivered" },
+    { "value": "10+", "label": "Years in Baton & Dance" },
+    { "value": "24+", "label": "Curated Artworks" },
+    { "value": "5+", "label": "Years Speech Club Tradition" }
+  ],
+  "pillars": [
+    {
+      "id": "medicine",
+      "number": "01",
+      "title": "Clinical & AI Research",
+      "tagline": "Science, Ethics & Empathy",
+      "description": "Investigating applications of artificial intelligence in healthcare, psychiatric behavior, and compassionate emergency medical practice.",
+      "href": "/experiences",
+      "accent": "emerald"
+    },
+    {
+      "id": "art",
+      "number": "02",
+      "title": "Visual Arts & Realism",
+      "tagline": "Observation & Reflection",
+      "description": "Oil on canvas, colored pencil, and graphite still life studies capturing optics, textures, and the delicate nature of light.",
+      "href": "/art",
+      "accent": "amber"
+    },
+    {
+      "id": "speech",
+      "number": "03",
+      "title": "Oratory & Public Discourse",
+      "tagline": "Speak. Listen. Grow Together.",
+      "description": "Weekly presentations spanning SAT pedagogy, historical philosophy, healthcare policy, and TED analysis since 2020.",
+      "href": "/speeches",
+      "accent": "indigo"
+    },
+    {
+      "id": "dance",
+      "number": "04",
+      "title": "Dance & Baton Twirling",
+      "tagline": "Flight, Precision & Rhythm",
+      "description": "Competitive performance art since age five—chasing flight, aerial baton choreography, and athletic stage presence.",
+      "href": "/dance",
+      "accent": "rose"
+    }
+  ],
+  "socials": [
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/amy-yan-28ba46327",
+      "label": "Connect on LinkedIn"
+    },
+    {
+      "name": "TikTok (First Aid / Health)",
+      "url": "https://www.tiktok.com/@yolkifirstaid?_t=ZG-90TRlh9Ic6q&_r=1",
+      "label": "@yolkifirstaid"
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+---
+import Layout from '../layouts/Layout.astro';
+import volunteering from '../data/volunteering.json';
+import work from '../data/work.json';
+---
+
+<Layout
+  title="Experience & Clinical Research | Zimeng (Amy) Yan"
+  description="Leadership milestones, independent medical research in AI and psychiatry, clinical shadowing, tutoring, and corporate engineering internship."
+>
+  <!-- Header Banner -->
+  <section class="pt-16 pb-12 md:pt-24 md:pb-16 bg-gradient-to-b from-stone-100/90 to-stone-50 border-b border-stone-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100/80 border border-emerald-200 text-emerald-900 text-xs font-mono uppercase tracking-wider mb-4">
+          Leadership • Clinical • Professional
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-serif font-bold text-stone-900 tracking-tight leading-tight">
+          Curiosity, Care & Real-World Impact
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed font-sans">
+          A track record spanning independent AI in medicine research, pediatrician clinical shadowing, engineering leadership at Motorola Solutions, and extensive mentorship and teaching.
+        </p>
+
+        <!-- Quick Summary Metrics -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-6 border-t border-stone-200 text-left">
+          <div>
+            <span class="block text-2xl sm:text-3xl font-serif font-bold text-stone-900">1st Place</span>
+            <span class="block text-xs font-mono text-stone-500 uppercase tracking-tight">Motorola Engineering Pitch</span>
+          </div>
+          <div>
+            <span class="block text-2xl sm:text-3xl font-serif font-bold text-stone-900">215K+</span>
+            <span class="block text-xs font-mono text-stone-500 uppercase tracking-tight">First-Aid Video Views</span>
+          </div>
+          <div>
+            <span class="block text-2xl sm:text-3xl font-serif font-bold text-stone-900">NSU & Hosp.</span>
+            <span class="block text-xs font-mono text-stone-500 uppercase tracking-tight">Clinical Shadowing</span>
+          </div>
+          <div>
+            <span class="block text-2xl sm:text-3xl font-serif font-bold text-stone-900">300+</span>
+            <span class="block text-xs font-mono text-stone-500 uppercase tracking-tight">Students & Families Mentored</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Dual-Track Navigation Tabs -->
+  <section class="py-12 md:py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Track Switcher -->
+      <div class="flex items-center justify-center mb-12">
+        <div class="inline-flex p-1.5 rounded-full bg-stone-100 border border-stone-200 shadow-inner">
+          <button
+            type="button"
+            id="tab-leadership"
+            class="px-6 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all bg-stone-900 text-stone-50 shadow-xs"
+          >
+            Leadership, Clinical & Research ({volunteering.length})
+          </button>
+          <button
+            type="button"
+            id="tab-work"
+            class="px-6 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all text-stone-600 hover:text-stone-900"
+          >
+            Professional & Teaching Experience ({work.length})
+          </button>
+        </div>
+      </div>
+
+      <!-- Track 1: Leadership & Research List -->
+      <div id="content-leadership" class="space-y-6 max-w-4xl mx-auto">
+        {volunteering.map((item, idx) => (
+          <article class="p-6 md:p-8 rounded-2xl bg-stone-50 border border-stone-200/90 hover:border-stone-900 hover:shadow-md transition-all duration-300">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-stone-200">
+              <div>
+                <span class="text-xs font-mono text-amber-800 font-bold uppercase tracking-wider block mb-1">
+                  {item.organization} {item.location ? `• ${item.location}` : ''}
+                </span>
+                <h2 class="text-2xl font-serif font-bold text-stone-900">
+                  {item.title}
+                </h2>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-mono bg-white border border-stone-300 text-stone-700 whitespace-nowrap self-start sm:self-auto">
+                {item.period}
+              </span>
+            </div>
+
+            <ul class="mt-4 space-y-2 text-stone-700 text-sm leading-relaxed">
+              {item.descriptionPoints.map((point) => (
+                <li class="flex items-start gap-2.5">
+                  <span class="text-amber-700 font-bold mt-1 text-xs">▸</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+
+      <!-- Track 2: Professional & Work Experience List -->
+      <div id="content-work" class="hidden space-y-6 max-w-4xl mx-auto">
+        {work.map((item, idx) => (
+          <article class="p-6 md:p-8 rounded-2xl bg-stone-50 border border-stone-200/90 hover:border-stone-900 hover:shadow-md transition-all duration-300">
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-4 border-b border-stone-200">
+              <div>
+                <span class="text-xs font-mono text-indigo-800 font-bold uppercase tracking-wider block mb-1">
+                  {item.organization} {item.location ? `• ${item.location}` : ''}
+                </span>
+                <h2 class="text-2xl font-serif font-bold text-stone-900">
+                  {item.title}
+                </h2>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-mono bg-white border border-stone-300 text-stone-700 whitespace-nowrap self-start sm:self-auto">
+                {item.period}
+              </span>
+            </div>
+
+            <ul class="mt-4 space-y-2 text-stone-700 text-sm leading-relaxed">
+              {item.descriptionPoints.map((point) => (
+                <li class="flex items-start gap-2.5">
+                  <span class="text-indigo-700 font-bold mt-1 text-xs">▸</span>
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Connect Banner -->
+  <section class="py-16 bg-stone-100 border-t border-stone-200 text-center">
+    <div class="max-w-3xl mx-auto px-4">
+      <h3 class="font-serif text-2xl font-bold text-stone-900 mb-3">
+        Interested in Academic or Clinical Collaboration?
+      </h3>
+      <p class="text-sm text-stone-600 mb-6">
+        Open to research inquiries, mentorship opportunities, and discussions around emergency medicine and psychiatry.
+      </p>
+      <a
+        href="https://www.linkedin.com/in/amy-yan-28ba46327"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-stone-900 text-stone-50 text-sm font-semibold hover:bg-stone-800 transition-colors shadow-md"
+      >
+        Connect on LinkedIn →
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const tabLeadership = document.getElementById('tab-leadership');
+  const tabWork = document.getElementById('tab-work');
+  const contentLeadership = document.getElementById('content-leadership');
+  const contentWork = document.getElementById('content-work');
+
+  tabLeadership?.addEventListener('click', () => {
+    tabLeadership.classList.add('bg-stone-900', 'text-stone-50', 'shadow-xs');
+    tabLeadership.classList.remove('text-stone-600');
+
+    tabWork?.classList.remove('bg-stone-900', 'text-stone-50', 'shadow-xs');
+    tabWork?.classList.add('text-stone-600');
+
+    contentLeadership?.classList.remove('hidden');
+    contentWork?.classList.add('hidden');
+  });
+
+  tabWork?.addEventListener('click', () => {
+    tabWork.classList.add('bg-stone-900', 'text-stone-50', 'shadow-xs');
+    tabWork.classList.remove('text-stone-600');
+
+    tabLeadership?.classList.remove('bg-stone-900', 'text-stone-50', 'shadow-xs');
+    tabLeadership?.classList.add('text-stone-600');
+
+    contentWork?.classList.remove('hidden');
+    contentLeadership?.classList.add('hidden');
+  });
+</script>

@@ -1,0 +1,484 @@
+---
+import Layout from '../layouts/Layout.astro';
+import profile from '../data/profile.json';
+import artworks from '../data/artworks.json';
+import speeches from '../data/speeches.json';
+import speechPhotos from '../data/speech_photos.json';
+import danceEvents from '../data/dance_events.json';
+
+// Featured artworks (sample 4 high-impact pieces)
+const featuredArtworks = artworks.slice(0, 4);
+
+// Sample speech photos for carousel/strip
+const featuredSpeechPhotos = speechPhotos.slice(0, 6);
+
+// Recent speeches
+const recentSpeeches = speeches.slice(0, 4);
+---
+
+<Layout title="Zimeng (Amy) Yan | Scholar, Artist & Orator">
+  <!-- 1. Hero Section -->
+  <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden bg-gradient-to-b from-stone-100/80 via-stone-50 to-stone-50 border-b border-stone-200/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Hero Left: Narrative & Typography -->
+        <div class="lg:col-span-7 space-y-6 text-left">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100/70 border border-amber-200/80 text-amber-900 text-xs font-mono uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-amber-600 animate-pulse"></span>
+            Aspiring Emergency Medicine Physician & Psychiatrist
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-stone-900 leading-[1.12]">
+            Science, Art, Movement & <span class="italic text-amber-800">Voice.</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-stone-600 leading-relaxed font-sans max-w-2xl">
+            A decade of disciplined practice, intense curiosity, and compassionate care. Bringing scientific rigor together with empathy, observation, and expressive oratory.
+          </p>
+
+          <!-- Metric Highlights Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 py-3 border-y border-stone-200/80">
+            {profile.stats.map((stat) => (
+              <div>
+                <span class="block text-2xl sm:text-3xl font-serif font-bold text-stone-900">
+                  {stat.value}
+                </span>
+                <span class="block text-xs font-mono text-stone-500 uppercase tracking-tight">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <!-- Hero Action Buttons -->
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <a
+              href="/art"
+              class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-stone-900 text-stone-50 font-medium text-sm hover:bg-amber-800 transition-colors shadow-sm"
+            >
+              Explore Art Studio
+              <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+
+            <a
+              href="/speeches"
+              class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-stone-300 text-stone-800 font-medium text-sm hover:bg-stone-100 hover:border-stone-900 transition-all"
+            >
+              140+ Speeches Archive
+            </a>
+
+            <a
+              href="/experiences"
+              class="inline-flex items-center justify-center px-4 py-3 text-stone-600 font-medium text-sm hover:text-stone-900 transition-colors"
+            >
+              Research & Experience →
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Right: Portrait Art Card -->
+        <div class="lg:col-span-5 flex justify-center lg:justify-end">
+          <div class="relative w-full max-w-md">
+            <!-- Decorative backdrop elements -->
+            <div class="absolute -top-4 -left-4 w-full h-full rounded-2xl bg-gradient-to-tr from-amber-200/50 to-stone-200/50 -rotate-2 transform"></div>
+            
+            <div class="relative rounded-2xl overflow-hidden bg-white shadow-xl border border-stone-200/80">
+              <img
+                src={profile.profileImage}
+                alt="Zimeng (Amy) Yan"
+                class="w-full aspect-[4/5] object-cover object-center"
+                loading="eager"
+              />
+              
+              <!-- Floating Caption Card -->
+              <div class="p-4 sm:p-5 bg-white/95 backdrop-blur-xs border-t border-stone-100">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h2 class="font-serif text-lg font-bold text-stone-900">Zimeng (Amy) Yan</h2>
+                    <p class="text-xs text-stone-500 font-mono">Ft. Lauderdale, Florida</p>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-full text-[11px] font-mono bg-stone-100 text-stone-700">
+                    Class of '25
+                  </span>
+                </div>
+                <p class="mt-2 text-xs text-stone-600 italic">
+                  "Driven by emergency medicine, human psychology, and ethical questions that shape compassionate decisions."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. The Four Pillars Section -->
+  <section class="py-20 md:py-28 bg-white border-b border-stone-200/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mb-16">
+        <span class="text-xs font-mono uppercase tracking-widest text-amber-700 font-semibold block mb-2">
+          Multidisciplinary Foundations
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900 tracking-tight">
+          Four Disciplines. One Commitment to Excellence.
+        </h2>
+        <p class="mt-3 text-stone-600 text-base sm:text-lg">
+          Each domain informs and enriches the others — bringing the observation of art, the physical focus of dance, and the clear communication of oratory into clinical science.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {profile.pillars.map((pillar) => (
+          <a
+            href={pillar.href}
+            class="group p-6 rounded-2xl bg-stone-50 border border-stone-200 hover:border-stone-900 hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+          >
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-mono font-bold text-amber-800 bg-amber-100/60 px-2.5 py-1 rounded-md">
+                  {pillar.number}
+                </span>
+                <span class="text-stone-400 group-hover:text-stone-900 group-hover:translate-x-1 transition-all">
+                  →
+                </span>
+              </div>
+              <h3 class="text-xl font-serif font-bold text-stone-900 group-hover:text-amber-800 transition-colors">
+                {pillar.title}
+              </h3>
+              <p class="text-xs font-mono uppercase tracking-wider text-stone-500 mt-1 mb-3">
+                {pillar.tagline}
+              </p>
+              <p class="text-sm text-stone-600 leading-relaxed">
+                {pillar.description}
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-stone-200/60 text-xs font-medium text-stone-900 flex items-center justify-between">
+              <span>Explore Section</span>
+              <span class="text-amber-700 font-serif italic">View →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Philosophical & About Statement -->
+  <section id="about" class="py-20 md:py-28 bg-stone-100/60 border-b border-stone-200/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-xs font-mono uppercase tracking-widest text-amber-800 font-semibold block">
+            About Zimeng Yan
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900 leading-snug">
+            Combining Science With Empathy to Make a Meaningful Impact
+          </h2>
+          <div class="space-y-4 text-stone-600 text-sm sm:text-base leading-relaxed">
+            <p>
+              {profile.bio}
+            </p>
+            <p>
+              Whether analyzing the neural mechanisms behind behavioral decisions, authoring independent research reports on AI in clinical diagnosis, or twirling on the competitive national stage, every project reflects a deep drive to understand the human condition.
+            </p>
+          </div>
+
+          <div class="pt-2 flex flex-wrap gap-4">
+            <div class="flex items-center gap-2 text-xs font-mono text-stone-700 bg-white px-3.5 py-2 rounded-lg border border-stone-200">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              Emergency Medicine Focus
+            </div>
+            <div class="flex items-center gap-2 text-xs font-mono text-stone-700 bg-white px-3.5 py-2 rounded-lg border border-stone-200">
+              <span class="w-2 h-2 rounded-full bg-indigo-500"></span>
+              Neuropsychiatry & Ethics
+            </div>
+            <div class="flex items-center gap-2 text-xs font-mono text-stone-700 bg-white px-3.5 py-2 rounded-lg border border-stone-200">
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+              Community Health Education
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <!-- Multi-photo collage highlighting Amy's multifaceted journey -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="space-y-4">
+              <div class="rounded-2xl overflow-hidden shadow-md border border-stone-200 aspect-[4/5]">
+                <img
+                  src="/Amy_drawings_pics/Retake-train.jpg"
+                  alt="Vintage Steam Locomotive oil painting"
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-4 rounded-xl bg-white border border-stone-200 shadow-xs">
+                <span class="text-xs font-mono text-amber-800 font-bold block">Art Studio</span>
+                <span class="text-xs text-stone-600">Oil on Canvas & Photorealism Studies</span>
+              </div>
+            </div>
+
+            <div class="space-y-4 pt-8">
+              <div class="p-4 rounded-xl bg-white border border-stone-200 shadow-xs">
+                <span class="text-xs font-mono text-indigo-800 font-bold block">Public Speaking</span>
+                <span class="text-xs text-stone-600">Weekly oratory forum since 2020</span>
+              </div>
+              <div class="rounded-2xl overflow-hidden shadow-md border border-stone-200 aspect-[4/5]">
+                <img
+                  src="/Amy_speech_pics/20240802_141347.jpeg"
+                  alt="Amy giving a speech"
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Curated Art Studio Preview -->
+  <section class="py-20 md:py-28 bg-white border-b border-stone-200/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-amber-800 font-semibold block mb-2">
+            Selected Artworks
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900 tracking-tight">
+            Observation & Reflection Through Visual Mediums
+          </h2>
+          <p class="mt-2 text-stone-600 max-w-xl text-sm sm:text-base">
+            Exploring light refraction, textures, and emotional resonance through photorealistic oil painting, colored pencils, and pencil studies.
+          </p>
+        </div>
+        <div>
+          <a
+            href="/art"
+            class="inline-flex items-center gap-2 text-sm font-semibold text-stone-900 hover:text-amber-800 pb-1 border-b-2 border-stone-900 hover:border-amber-800 transition-colors"
+          >
+            View Full Art Studio ({artworks.length} Works) →
+          </a>
+        </div>
+      </div>
+
+      <!-- Artwork Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {featuredArtworks.map((art) => (
+          <a
+            href={`/art#${art.id}`}
+            class="group rounded-2xl overflow-hidden bg-stone-50 border border-stone-200/90 hover:border-stone-900 hover:shadow-xl transition-all duration-300 flex flex-col"
+          >
+            <div class="relative aspect-[4/5] overflow-hidden bg-stone-200">
+              <img
+                src={art.imageUrl}
+                alt={art.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-stone-900/80 text-stone-50 backdrop-blur-xs">
+                {art.type}
+              </div>
+              <div class="absolute top-3 right-3 px-2 py-0.5 rounded text-[11px] font-mono bg-white/90 text-stone-700">
+                {art.year}
+              </div>
+            </div>
+            <div class="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="font-serif text-lg font-bold text-stone-900 group-hover:text-amber-800 transition-colors">
+                  {art.title}
+                </h3>
+                <p class="text-xs text-stone-500 mt-2 line-clamp-2 leading-relaxed">
+                  {art.description}
+                </p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-stone-200 text-xs font-mono text-amber-800 flex items-center justify-between">
+                <span>View Study</span>
+                <span>↗</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 140+ Speeches Archive Spotlight -->
+  <section class="py-20 md:py-28 bg-stone-900 text-stone-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+        <div class="lg:col-span-7 space-y-4">
+          <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold block">
+            Five Years of Weekly Practice
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white tracking-tight">
+            The 140+ Speeches Archive: Speak. Listen. Grow Together.
+          </h2>
+          <p class="text-stone-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+            Founded in 2020, our weekly family and youth oratory forum has analyzed over 500 TED and TEDx talks, involved 100+ families, and hosted presentations on ethics, psychology, history, and SAT pedagogy.
+          </p>
+        </div>
+        <div class="lg:col-span-5 flex lg:justify-end gap-3">
+          <a
+            href="/speeches"
+            class="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-amber-500 text-stone-950 font-semibold text-sm hover:bg-amber-400 transition-colors shadow-lg"
+          >
+            Search 140+ Speeches Archive
+            <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Photo Carousel Strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-12">
+        {featuredSpeechPhotos.map((photo, i) => (
+          <div class="rounded-xl overflow-hidden aspect-[4/3] bg-stone-800 border border-stone-800 hover:border-amber-400 transition-colors">
+            <img
+              src={photo.src}
+              alt={photo.alt || `Speech presentation ${i + 1}`}
+              class="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+
+      <!-- Recent Speeches Table / Cards -->
+      <div class="bg-stone-800/80 rounded-2xl border border-stone-700/80 p-6 md:p-8">
+        <div class="flex items-center justify-between mb-6 pb-4 border-b border-stone-700">
+          <h3 class="text-base font-serif font-bold text-stone-200">Recent Presentation Highlights</h3>
+          <span class="text-xs font-mono text-stone-400">Total Catalog: 141 Recorded Speeches</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {recentSpeeches.map((sp) => (
+            <div class="p-4 rounded-xl bg-stone-900/60 border border-stone-800 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono text-amber-400 mb-2">
+                  <span>{sp.id.toUpperCase()}</span>
+                  <span>{sp.date}</span>
+                </div>
+                <h4 class="font-medium text-stone-100 text-sm line-clamp-2">
+                  {sp.topic}
+                </h4>
+              </div>
+              <div class="mt-4 pt-3 border-t border-stone-800 text-[11px] font-mono text-stone-400 flex justify-between">
+                <span>{sp.forum}</span>
+                <span class="text-stone-300">({sp.source})</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Dance & Baton Twirling Feature -->
+  <section class="py-20 md:py-28 bg-stone-50 border-b border-stone-200/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Visuals Left -->
+        <div class="lg:col-span-6 order-2 lg:order-1">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="rounded-2xl overflow-hidden shadow-lg border border-stone-200 aspect-[3/4]">
+              <img
+                src="/Amy_dancing_pics/20240428_140635.jpg"
+                alt="Amy baton twirling performance 2024"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="space-y-4 pt-6">
+              <div class="rounded-2xl overflow-hidden shadow-lg border border-stone-200 aspect-[3/4]">
+                <img
+                  src="/Amy_dancing_pics/2022-04-24_14-04-10_691.jpeg"
+                  alt="Amy dance performance 2022"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Narrative Right -->
+        <div class="lg:col-span-6 order-1 lg:order-2 space-y-6">
+          <span class="text-xs font-mono uppercase tracking-widest text-rose-800 font-semibold block">
+            Competitive Performance Art
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900 leading-snug">
+            DANCE: Where Passion Meets the Beat
+          </h2>
+          <p class="text-stone-600 text-base leading-relaxed">
+            "Since age five, I have chased flight with my feet, spun a baton across the sky, and felt the stands erupt around me!"
+          </p>
+          <div class="p-5 rounded-2xl bg-white border border-stone-200 shadow-xs space-y-3">
+            <h3 class="font-serif font-bold text-stone-900 text-base">Championship Record</h3>
+            <ul class="text-sm text-stone-600 space-y-2">
+              <li class="flex items-center gap-2">
+                <span class="text-amber-600 font-bold">★</span>
+                <span><strong>1 National Championship</strong> Title</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-amber-600 font-bold">★</span>
+                <span><strong>7 State Championships</strong> (Both Solo & Duo)</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-amber-600 font-bold">★</span>
+                <span>Over <strong>25 local competition titles</strong></span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-amber-600 font-bold">★</span>
+                <span><strong>585 consecutive practice days</strong> to earn competition team spot</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <a
+              href="/dance"
+              class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-stone-900 text-stone-50 font-medium text-sm hover:bg-stone-800 transition-colors shadow-xs"
+            >
+              Explore Dance Timeline (2017–2024) →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Leadership, Clinical & Research Callout -->
+  <section class="py-20 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-3xl mx-auto">
+      <span class="text-xs font-mono uppercase tracking-widest text-emerald-800 font-semibold block mb-2">
+        Clinical & Leadership Milestones
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900 mb-4">
+        Bridging Classroom, Clinic & Community
+      </h2>
+      <p class="text-stone-600 text-base sm:text-lg mb-8 leading-relaxed">
+        From authoring independent reports on AI in Medicine and winning 1st place in Motorola's engineering pitch competition, to mentoring incoming students and tutoring SAT math.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="/experiences"
+          class="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-stone-900 text-stone-50 font-medium text-sm hover:bg-stone-800 transition-colors shadow-md"
+        >
+          View Full Experience & Leadership Timeline →
+        </a>
+        <a
+          href="https://www.linkedin.com/in/amy-yan-28ba46327"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center px-6 py-3.5 rounded-full border border-stone-300 text-stone-700 font-medium text-sm hover:border-stone-900 hover:text-stone-900 transition-colors"
+        >
+          Connect on LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

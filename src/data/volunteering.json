@@ -1,0 +1,84 @@
+[
+  {
+    "id": "exp-ca-mentor",
+    "title": "Peer Mentor",
+    "organization": "College Academy",
+    "period": "12th Grade",
+    "location": null,
+    "descriptionPoints": [
+      "Guided incoming students, providing support and resources to ease their transition into the academy."
+    ]
+  },
+  {
+    "id": "exp-ai-medicine",
+    "title": "AI in Medicine Research",
+    "organization": "Independent Project",
+    "period": "11th - 12th Grade",
+    "location": "Remote",
+    "descriptionPoints": [
+      "Conducted independent research and authored comprehensive reports on the applications of AI in medicine.",
+      "Presented findings to Nova Southeastern University (NSU) staff, the College Academy principal, and counselors.",
+      "Connected with the \"Hello Robot\" company to gain industry insights and explore real-world applications."
+    ]
+  },
+  {
+    "id": "exp-pediatrician",
+    "title": "Pediatrician Shadowing",
+    "organization": "Memorial Hospital",
+    "period": "10th - 12th Grade",
+    "location": null,
+    "descriptionPoints": [
+      "Observed the complete patient care process, from diagnosis to the creation of treatment plans.",
+      "Learned effective techniques for communicating complex medical information to patients in simple, understandable terms.",
+      "Expanded medical knowledge through direct clinical exposure."
+    ]
+  },
+  {
+    "id": "exp-tiktok",
+    "title": "First-Aid Education Content Creator",
+    "organization": "TikTok Passion Project (@Yolkifirstaid)",
+    "period": "9th - 12th Grade",
+    "location": "Online",
+    "descriptionPoints": [
+      "Created and managed a TikTok channel to educate the public on first-aid procedures using original illustrations.",
+      "Produced over 10 videos, growing the account to 350+ followers, 13,000+ likes, and 215,000+ total views.",
+      "Merged a passion for medicine with a hobby in digital art to create engaging educational content."
+    ]
+  },
+  {
+    "id": "exp-baton",
+    "title": "Competitive Baton Twirler",
+    "organization": "Community Competition Team",
+    "period": "4th - 12th Grade",
+    "location": null,
+    "descriptionPoints": [
+      "Achieved 1 National Championship, 7 State Championships, and over 25 local competition titles.",
+      "Won both Solo and Duo State Championships, showcasing individual and collaborative excellence.",
+      "Demonstrated extreme dedication by practicing for 585 consecutive days to earn a spot on the competition team."
+    ]
+  },
+  {
+    "id": "exp-tedx",
+    "title": "Family Based Speech Club",
+    "organization": "Family and Community Connections",
+    "period": "8th - 12th Grade",
+    "location": "Community-based",
+    "descriptionPoints": [
+      "Organize a weekly family speech club accommodating 2-5 families each week; 100+ families involved so far.",
+      "Watch and discuss TED talks for key learning. 500+ TED/TEDx talks learned so far.",
+      "Practice delivering speech with participants’ constructive feedback; guest speakers from top 20 universities. 300+ speeches delivered so far",
+      "Express gratitude with specific examples for family members."
+    ]
+  },
+  {
+    "id": "exp-art",
+    "title": "Artist",
+    "organization": "Formal Art Training",
+    "period": "1st - 12th Grade",
+    "location": null,
+    "descriptionPoints": [
+      "Committed to weekly art classes for over a decade, producing hundreds of pieces of artwork.",
+      "Received two local awards in recognition of artistic skill and creativity."
+    ]
+  }
+]
